@@ -24,6 +24,6 @@ type GetAllStaffRequest struct {
 }
 
 type GetAllStaff struct {
-	Branches []Branch
-	Count    int
+	Staffs []Staff
+	Count  int
 }

@@ -5,10 +5,11 @@ import (
 	"shop/models"
 )
 
-func (h *handler) CreateBranch(name, address string) {
+func (h *handler) CreateBranch(name, address, foundedAt string) {
 	resp, err := h.strg.Branch().CreateBranch(models.CreateBranch{
-		Name:    name,
-		Address: address,
+		Name:      name,
+		Address:   address,
+		FoundedAt: foundedAt,
 	})
 	if err != nil {
 		fmt.Println("error from CreateBranch:", err.Error())
@@ -17,11 +18,12 @@ func (h *handler) CreateBranch(name, address string) {
 	fmt.Println("created new branch with id:", resp)
 }
 
-func (h *handler) UpdateBranch(id int, name, address string) {
+func (h *handler) UpdateBranch(id int, name, address, foundedAt string) {
 	resp, err := h.strg.Branch().UpdateBranch(models.Branch{
-		Id:      id,
-		Name:    name,
-		Address: address,
+		Id:        id,
+		Name:      name,
+		Address:   address,
+		FoundedAt: foundedAt,
 	})
 	if err != nil {
 		fmt.Println("error from UpdateBranch:", err.Error())

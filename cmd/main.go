@@ -9,6 +9,8 @@ import (
 	"shop/storage/memory"
 )
 
+var id, typ int
+
 func main() {
 	cfg := config.Load()
 	strg := memory.NewStorage()
@@ -39,7 +41,6 @@ func main() {
 				foundedAt, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 				h.CreateBranch(name, address, foundedAt)
 			} else if method == "update" {
-				id := 0
 				fmt.Print("Enter Branch Id: ")
 				fmt.Scan(&id)
 				fmt.Print("Enter Branch Name: ")
@@ -50,7 +51,6 @@ func main() {
 				foundedAt, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 				h.UpdateBranch(id, name, address, foundedAt)
 			} else if method == "get" {
-				id := 0
 				fmt.Print("Enter Branch Id: ")
 				fmt.Scan(&id)
 				h.GetBranch(id)
@@ -64,7 +64,6 @@ func main() {
 				search, _ = bufio.NewReader(os.Stdin).ReadString('\n')
 				h.GetAllBranch(page, limit, search)
 			} else if method == "delete" {
-				id := 0
 				fmt.Print("Enter Branch Id: ")
 				fmt.Scan(&id)
 				h.DeleteBranch(id)
@@ -73,7 +72,6 @@ func main() {
 			if method == "create" {
 				fmt.Print("Enter Staff Name: ")
 				name, _ := bufio.NewReader(os.Stdin).ReadString('\n')
-				typ := 0
 				fmt.Print("Enter Staff Type: ")
 				fmt.Scan(&typ)
 				fmt.Print("Enter Staff Birthdate: ")
@@ -83,7 +81,6 @@ func main() {
 				fmt.Scan(&balance)
 				h.CreateStaff(name, birthDate, typ, balance)
 			} else if method == "update" {
-				id, typ := 0, 0
 				fmt.Print("Enter Staff Id: ")
 				fmt.Scan(&id)
 				fmt.Print("Enter Staff Name: ")
@@ -96,7 +93,6 @@ func main() {
 				fmt.Scan(&balance)
 				h.UpdateStaff(id, typ, name, birthDate, balance)
 			} else if method == "get" {
-				id := 0
 				fmt.Print("Enter Staff Id: ")
 				fmt.Scan(&id)
 				h.GetStaff(id)
@@ -110,7 +106,6 @@ func main() {
 				search, _ = bufio.NewReader(os.Stdin).ReadString('\n')
 				h.GetAllStaff(page, limit, search)
 			} else if method == "delete" {
-				id := 0
 				fmt.Print("Enter Staff Id: ")
 				fmt.Scan(&id)
 				h.DeleteStaff(id)
@@ -119,7 +114,6 @@ func main() {
 			if method == "create" {
 				fmt.Print("Enter StaffTarif Name: ")
 				name, _ := bufio.NewReader(os.Stdin).ReadString('\n')
-				typ := 0
 				fmt.Print("Enter StaffTarif Type: ")
 				fmt.Scan(&typ)
 				fmt.Print("Enter StaffTarif foundedAt: ")
@@ -130,6 +124,39 @@ func main() {
 				fmt.Print("Enter AmountForCard: ")
 				fmt.Scan(&amountCard)
 				h.CreateStaffTarif(name, foundedAt, typ, amountCash, amountCard)
+			} else if method == "update" {
+				fmt.Print("Enter StaffTarif Id: ")
+				fmt.Scan(&id)
+				fmt.Print("Enter StaffTarif Type: ")
+				fmt.Scan(&typ)
+				fmt.Print("Enter StaffTarif Name: ")
+				name, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				fmt.Print("Enter StaffTarif FoundedAt: ")
+				foundedAt, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				var amountCash, amountCard float64
+				fmt.Print("Enter AmountForCash: ")
+				fmt.Scan(&amountCash)
+				fmt.Print("Enter AmountForCard: ")
+				fmt.Scan(&amountCard)
+				h.UpdateStaffTarif(id, typ, name, foundedAt, amountCash, amountCard)
+			} else if method == "get" {
+				fmt.Print("Enter StaffTarif Id: ")
+				fmt.Scan(&id)
+				h.GetStaffTarif(id)
+			} else if method == "getAll" {
+				fmt.Print("")
+				page, limit, search := 1, 10, ""
+				fmt.Print("Enter page number: ")
+				fmt.Scan(&page)
+				fmt.Print("Enter page limit: ")
+				fmt.Scan(&limit)
+				fmt.Print("Enter search name: ")
+				search, _ = bufio.NewReader(os.Stdin).ReadString('\n')
+				h.GetAllStaffTarif(page, limit, search)
+			} else if method == "delete" {
+				fmt.Print("Enter StaffTarif Id: ")
+				fmt.Scan(&id)
+				h.DeleteStaffTarif(id)
 			}
 		}
 	}

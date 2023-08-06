@@ -17,6 +17,6 @@ func Load() *Config {
 		Limit:   10,
 		Page:    1,
 		Methods: []string{"create", "update", "get", "getAll", "delete"},
-		Objects: []string{"branch"},
+		Objects: []string{"branch", "staff"},
 	}
 }

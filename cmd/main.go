@@ -115,6 +115,22 @@ func main() {
 				fmt.Scan(&id)
 				h.DeleteStaff(id)
 			}
+		} else if object == "staffTarif" {
+			if method == "create" {
+				fmt.Print("Enter StaffTarif Name: ")
+				name, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				typ := 0
+				fmt.Print("Enter StaffTarif Type: ")
+				fmt.Scan(&typ)
+				fmt.Print("Enter StaffTarif foundedAt: ")
+				foundedAt, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				var amountCash, amountCard float64
+				fmt.Print("Enter AmountForCash: ")
+				fmt.Scan(&amountCash)
+				fmt.Print("Enter AmountForCard: ")
+				fmt.Scan(&amountCard)
+				h.CreateStaffTarif(name, foundedAt, typ, amountCash, amountCard)
+			}
 		}
 	}
 }

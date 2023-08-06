@@ -6,6 +6,7 @@ type StorageI interface {
 	Branch() BranchesI
 	Staff() StaffsI
 	StaffTarif() StaffTarifsI
+	StaffTransaction() StaffTransactionsI
 }
 
 type BranchesI interface {
@@ -30,4 +31,12 @@ type StaffTarifsI interface {
 	GetStaffTarif(models.IdRequest) (models.StaffTarif, error)
 	GetAllStaffTarif(models.GetAllStaffTarifRequest) (models.GetAllStaffTarif, error)
 	DeleteStaffTarif(models.IdRequest) (string, error)
+}
+
+type StaffTransactionsI interface {
+	CreateStaffTransaction(models.CreateStaffTransaction) (int, error)
+	UpdateStaffTransaction(models.StaffTransaction) (string, error)
+	GetStaffTransaction(models.IdRequest) (models.StaffTransaction, error)
+	GetAllStaffTransaction(models.GetAllStaffTransactionRequest) (models.GetAllStaffTransaction, error)
+	DeleteStaffTransaction(models.IdRequest) (string, error)
 }

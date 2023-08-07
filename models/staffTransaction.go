@@ -3,7 +3,7 @@ package models
 type CreateStaffTransaction struct {
 	SaleId     int
 	StaffId    int
-	Type       string
+	Type       int
 	SourceType string
 	Amount     int
 	Text       string
@@ -13,7 +13,7 @@ type StaffTransaction struct {
 	Id         int
 	SaleId     int
 	StaffId    int
-	Type       string
+	Type       int
 	SourceType string
 	Amount     int
 	Text       string

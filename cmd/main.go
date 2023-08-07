@@ -144,7 +144,6 @@ func main() {
 				fmt.Scan(&id)
 				h.GetStaffTarif(id)
 			} else if method == "getAll" {
-				fmt.Print("")
 				page, limit, search := 1, 10, ""
 				fmt.Print("Enter page number: ")
 				fmt.Scan(&page)
@@ -157,6 +156,51 @@ func main() {
 				fmt.Print("Enter StaffTarif Id: ")
 				fmt.Scan(&id)
 				h.DeleteStaffTarif(id)
+			}
+		} else if object == "staffTransaction" {
+			if method == "create" {
+				saleId, staffId, amount, typ := 0, 0, 0, 0
+				fmt.Print("Enter Sale Id: ")
+				fmt.Scan(&saleId)
+				fmt.Print("Enter Staff Id: ")
+				fmt.Scan(&staffId)
+				fmt.Print("Enter Amount: ")
+				fmt.Scan(&amount)
+				fmt.Print("Enter Transaction Type: ")
+				fmt.Scan(&typ)
+				sourceType, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				text, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				h.CreateStaffTransaction(saleId, staffId, amount, typ, sourceType, text)
+			} else if method == "update" {
+				fmt.Print("Enter transaction Id: ")
+				fmt.Scan(&id)
+				saleId, staffId, amount, typ := 0, 0, 0, 0
+				fmt.Print("Enter Sale Id: ")
+				fmt.Scan(&saleId)
+				fmt.Print("Enter Staff Id: ")
+				fmt.Scan(&staffId)
+				fmt.Print("Enter Amount: ")
+				fmt.Scan(&amount)
+				fmt.Print("Enter Transaction Type: ")
+				fmt.Scan(&typ)
+				sourceType, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				text, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				h.UpdateStaffTransaction(id, saleId, staffId, amount, typ, sourceType, text)
+			} else if method == "get" {
+				fmt.Print("Enter transaction Id: ")
+				fmt.Scan(&id)
+				h.GetStaffTransaction(id)
+			} else if method == "getAll" {
+				page, limit := 1, 10
+				fmt.Print("Enter page number: ")
+				fmt.Scan(&page)
+				fmt.Print("Enter page limit: ")
+				fmt.Scan(&limit)
+				h.GetAllStaffTransaction(page, limit)
+			} else if method == "delete" {
+				fmt.Print("Enter transaction Id: ")
+				fmt.Scan(&id)
+				h.DeleteStaffTransaction(id)
 			}
 		}
 	}

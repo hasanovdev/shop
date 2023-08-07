@@ -206,6 +206,65 @@ func main() {
 				fmt.Scan(&id)
 				h.DeleteStaffTransaction(id)
 			}
+		} else if object == "sale" {
+			if method == "create" {
+				var (
+					branchId, shopAssistantId, cashierId, paymentType, status int
+					price                                                     float64
+				)
+				fmt.Print("Enter Branch Id: ")
+				fmt.Scan(&branchId)
+				fmt.Print("Enter Shop Assistant Id: ")
+				fmt.Scan(&shopAssistantId)
+				fmt.Print("Enter Cashier Id: ")
+				fmt.Scan(&cashierId)
+				fmt.Print("Enter payment type: ")
+				fmt.Scan(&paymentType)
+				fmt.Print("Enter status: ")
+				fmt.Scan(&status)
+				fmt.Print("Enter Price: ")
+				fmt.Scan(&price)
+				fmt.Print("Enter client name: ")
+				clientName, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				h.CreateSale(branchId, shopAssistantId, cashierId, paymentType, status, price, clientName)
+			} else if method == "update" {
+				fmt.Print("Enter Sale Id: ")
+				fmt.Scan(&id)
+				var (
+					branchId, shopAssistantId, cashierId, paymentType, status int
+					price                                                     float64
+				)
+				fmt.Print("Enter Branch Id: ")
+				fmt.Scan(&branchId)
+				fmt.Print("Enter Shop Assistant Id: ")
+				fmt.Scan(&shopAssistantId)
+				fmt.Print("Enter Cashier Id: ")
+				fmt.Scan(&cashierId)
+				fmt.Print("Enter payment type: ")
+				fmt.Scan(&paymentType)
+				fmt.Print("Enter status: ")
+				fmt.Scan(&status)
+				fmt.Print("Enter Price: ")
+				fmt.Scan(&price)
+				fmt.Print("Enter client name: ")
+				clientName, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				h.UpdateSale(id, branchId, shopAssistantId, cashierId, paymentType, status, price, clientName)
+			} else if method == "get" {
+				fmt.Print("Enter Sale Id: ")
+				fmt.Scan(&id)
+				h.GetSale(id)
+			} else if method == "getAll" {
+				page, limit := 1, 10
+				fmt.Print("Enter page number: ")
+				fmt.Scan(&page)
+				fmt.Print("Enter page limit: ")
+				fmt.Scan(&limit)
+				h.GetAllSale(page, limit)
+			} else if method == "delete" {
+				fmt.Print("Enter Sale Id: ")
+				fmt.Scan(&id)
+				h.DeleteSale(id)
+			}
 		}
 	}
 }

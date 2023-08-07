@@ -4,6 +4,8 @@ import (
 	"errors"
 	"shop/models"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type staffTarifRepo struct {
@@ -14,14 +16,8 @@ func NewStaffTarifRepo() *staffTarifRepo {
 	return &staffTarifRepo{staffTarifs: make([]models.StaffTarif, 0)}
 }
 
-func (x *staffTarifRepo) CreateStaffTarif(req models.CreateStaffTarif) (int, error) {
-	var id int
-	if len(x.staffTarifs) == 0 {
-		id = 1
-	} else {
-		id = x.staffTarifs[len(x.staffTarifs)-1].Id + 1
-	}
-
+func (x *staffTarifRepo) CreateStaffTarif(req models.CreateStaffTarif) (string, error) {
+	id := uuid.New().String()
 	x.staffTarifs = append(x.staffTarifs, models.StaffTarif{
 		Id:            id,
 		Name:          req.Name,

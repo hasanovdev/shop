@@ -1,20 +1,17 @@
 package models
 
 type CreateSale struct {
-	BranchID        int
-	ShopAssistantID int
-	CashierID       int
-	Price           float64
-	PaymentType     int //card, cash
-	Status          int // success,cancel
-	ClientName      string
+	Price       float64
+	PaymentType int //card, cash
+	Status      int // success,cancel
+	ClientName  string
 }
 
 type Sale struct {
-	Id              int
-	BranchID        int
-	ShopAssistantID int
-	CashierID       int
+	Id              string
+	BranchID        string
+	ShopAssistantID string
+	CashierID       string
 	Price           float64
 	PaymentType     int //card, cash
 	Status          int // success,cancel

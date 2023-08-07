@@ -11,7 +11,7 @@ type StorageI interface {
 }
 
 type BranchesI interface {
-	CreateBranch(models.CreateBranch) (int, error)
+	CreateBranch(models.CreateBranch) (string, error)
 	UpdateBranch(models.Branch) (string, error)
 	GetBranch(models.IdRequest) (models.Branch, error)
 	GetAllBranch(models.GetAllBranchRequest) (models.GetAllBranch, error)
@@ -19,7 +19,7 @@ type BranchesI interface {
 }
 
 type StaffsI interface {
-	CreateStaff(models.CreateStaff) (int, error)
+	CreateStaff(models.CreateStaff) (string, error)
 	UpdateStaff(models.Staff) (string, error)
 	GetStaff(models.IdRequest) (models.Staff, error)
 	GetAllStaff(models.GetAllStaffRequest) (models.GetAllStaff, error)
@@ -27,7 +27,7 @@ type StaffsI interface {
 }
 
 type StaffTarifsI interface {
-	CreateStaffTarif(models.CreateStaffTarif) (int, error)
+	CreateStaffTarif(models.CreateStaffTarif) (string, error)
 	UpdateStaffTarif(models.StaffTarif) (string, error)
 	GetStaffTarif(models.IdRequest) (models.StaffTarif, error)
 	GetAllStaffTarif(models.GetAllStaffTarifRequest) (models.GetAllStaffTarif, error)
@@ -35,7 +35,7 @@ type StaffTarifsI interface {
 }
 
 type StaffTransactionsI interface {
-	CreateStaffTransaction(models.CreateStaffTransaction) (int, error)
+	CreateStaffTransaction(models.CreateStaffTransaction) (string, error)
 	UpdateStaffTransaction(models.StaffTransaction) (string, error)
 	GetStaffTransaction(models.IdRequest) (models.StaffTransaction, error)
 	GetAllStaffTransaction(models.GetAllStaffTransactionRequest) (models.GetAllStaffTransaction, error)
@@ -43,7 +43,7 @@ type StaffTransactionsI interface {
 }
 
 type SalesI interface {
-	CreateSale(models.CreateSale) (int, error)
+	CreateSale(models.CreateSale) (string, error)
 	UpdateSale(models.Sale) (string, error)
 	GetSale(models.IdRequest) (models.Sale, error)
 	GetAllSale(models.GetAllSaleRequest) (models.GetAllSale, error)

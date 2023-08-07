@@ -19,7 +19,7 @@ func (h *handler) CreateStaff(name, birthDate string, typ int, balance float64) 
 	fmt.Println("created new staff with id:", resp)
 }
 
-func (h *handler) UpdateStaff(id, typ int, name, birthDate string, balance float64) {
+func (h *handler) UpdateStaff(typ int, id, name, birthDate string, balance float64) {
 	resp, err := h.strg.Staff().UpdateStaff(models.Staff{
 		Id:        id,
 		Name:      name,
@@ -34,7 +34,7 @@ func (h *handler) UpdateStaff(id, typ int, name, birthDate string, balance float
 	fmt.Println(resp)
 }
 
-func (h *handler) GetStaff(id int) {
+func (h *handler) GetStaff(id string) {
 	resp, err := h.strg.Staff().GetStaff(models.IdRequest{Id: id})
 	if err != nil {
 		fmt.Println("error from GetStaff:", err.Error())
@@ -62,7 +62,7 @@ func (h *handler) GetAllStaff(page, limit int, search string) {
 	fmt.Println(resp)
 }
 
-func (h *handler) DeleteStaff(id int) {
+func (h *handler) DeleteStaff(id string) {
 	resp, err := h.strg.Staff().DeleteStaff(models.IdRequest{Id: id})
 	if err != nil {
 		fmt.Println("error from DeleteStaff:", err.Error())

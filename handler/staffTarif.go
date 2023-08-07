@@ -20,7 +20,7 @@ func (h *handler) CreateStaffTarif(name, foundedAt string, typ int, amountCash, 
 	fmt.Println("created new staffTarif with id:", resp)
 }
 
-func (h *handler) UpdateStaffTarif(id, typ int, name, foundedAt string, amountCash, amountCard float64) {
+func (h *handler) UpdateStaffTarif(id string, typ int, name, foundedAt string, amountCash, amountCard float64) {
 	resp, err := h.strg.StaffTarif().UpdateStaffTarif(models.StaffTarif{
 		Id:            id,
 		Name:          name,
@@ -36,7 +36,7 @@ func (h *handler) UpdateStaffTarif(id, typ int, name, foundedAt string, amountCa
 	fmt.Println(resp)
 }
 
-func (h *handler) GetStaffTarif(id int) {
+func (h *handler) GetStaffTarif(id string) {
 	resp, err := h.strg.StaffTarif().GetStaffTarif(models.IdRequest{Id: id})
 	if err != nil {
 		fmt.Println("error from GetStaffTarif:", err.Error())
@@ -64,7 +64,7 @@ func (h *handler) GetAllStaffTarif(page, limit int, search string) {
 	fmt.Println(resp)
 }
 
-func (h *handler) DeleteStaffTarif(id int) {
+func (h *handler) DeleteStaffTarif(id string) {
 	resp, err := h.strg.StaffTarif().DeleteStaffTarif(models.IdRequest{Id: id})
 	if err != nil {
 		fmt.Println("error from DeleteStaffTarif:", err.Error())

@@ -8,7 +8,7 @@ type CreateStaff struct {
 }
 
 type Staff struct {
-	Id        int
+	Id        string
 	Name      string
 	Type      int
 	Balance   float64

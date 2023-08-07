@@ -4,6 +4,8 @@ import (
 	"errors"
 	"shop/models"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type staffRepo struct {
@@ -14,14 +16,8 @@ func NewStaffRepo() *staffRepo {
 	return &staffRepo{staffs: make([]models.Staff, 0)}
 }
 
-func (x *staffRepo) CreateStaff(req models.CreateStaff) (int, error) {
-	var id int
-	if len(x.staffs) == 0 {
-		id = 1
-	} else {
-		id = x.staffs[len(x.staffs)-1].Id + 1
-	}
-
+func (x *staffRepo) CreateStaff(req models.CreateStaff) (string, error) {
+	id := uuid.New().String()
 	date, _ := time.Parse("2006-01-02", req.BirthDate)
 	x.staffs = append(x.staffs, models.Staff{
 		Id:        id,

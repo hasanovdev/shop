@@ -4,6 +4,8 @@ import (
 	"errors"
 	"shop/models"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type branchRepo struct {
@@ -14,13 +16,8 @@ func NewBranchRepo() *branchRepo {
 	return &branchRepo{branches: make([]models.Branch, 0)}
 }
 
-func (x *branchRepo) CreateBranch(req models.CreateBranch) (int, error) {
-	var id int
-	if len(x.branches) == 0 {
-		id = 1
-	} else {
-		id = x.branches[len(x.branches)-1].Id + 1
-	}
+func (x *branchRepo) CreateBranch(req models.CreateBranch) (string, error) {
+	id := uuid.New().String()
 	date, _ := time.Parse("2006-01-02", req.FoundedAt)
 	x.branches = append(x.branches, models.Branch{
 		Id:        id,

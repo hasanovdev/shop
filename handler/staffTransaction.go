@@ -5,10 +5,8 @@ import (
 	"shop/models"
 )
 
-func (h *handler) CreateStaffTransaction(saleId, staffId, amount, typ int, sourceType, text string) {
+func (h *handler) CreateStaffTransaction(amount, typ int, sourceType, text string) {
 	resp, err := h.strg.StaffTransaction().CreateStaffTransaction(models.CreateStaffTransaction{
-		SaleId:     saleId,
-		StaffId:    staffId,
 		Type:       typ,
 		SourceType: sourceType,
 		Amount:     amount,
@@ -21,11 +19,9 @@ func (h *handler) CreateStaffTransaction(saleId, staffId, amount, typ int, sourc
 	fmt.Println("created new staffTransaction with id:", resp)
 }
 
-func (h *handler) UpdateStaffTransaction(id, saleId, staffId, amount, typ int, sourceType, text string) {
+func (h *handler) UpdateStaffTransaction(id string, amount, typ int, sourceType, text string) {
 	resp, err := h.strg.StaffTransaction().UpdateStaffTransaction(models.StaffTransaction{
 		Id:         id,
-		SaleId:     saleId,
-		StaffId:    staffId,
 		Type:       typ,
 		SourceType: sourceType,
 		Amount:     amount,
@@ -38,7 +34,7 @@ func (h *handler) UpdateStaffTransaction(id, saleId, staffId, amount, typ int, s
 	fmt.Println(resp)
 }
 
-func (h *handler) GetStaffTransaction(id int) {
+func (h *handler) GetStaffTransaction(id string) {
 	resp, err := h.strg.StaffTransaction().GetStaffTransaction(models.IdRequest{Id: id})
 	if err != nil {
 		fmt.Println("error from GetStaffTransaction:", err.Error())
@@ -65,7 +61,7 @@ func (h *handler) GetAllStaffTransaction(page, limit int) {
 	fmt.Println(resp)
 }
 
-func (h *handler) DeleteStaffTransaction(id int) {
+func (h *handler) DeleteStaffTransaction(id string) {
 	resp, err := h.strg.StaffTransaction().DeleteStaffTransaction(models.IdRequest{Id: id})
 	if err != nil {
 		fmt.Println("error from DeleteStaffTransaction:", err.Error())

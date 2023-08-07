@@ -9,7 +9,8 @@ import (
 	"shop/storage/memory"
 )
 
-var id, typ int
+var id string
+var typ int
 
 func main() {
 	cfg := config.Load()
@@ -91,7 +92,7 @@ func main() {
 				birthDate, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 				var balance float64
 				fmt.Scan(&balance)
-				h.UpdateStaff(id, typ, name, birthDate, balance)
+				h.UpdateStaff(typ, id, name, birthDate, balance)
 			} else if method == "get" {
 				fmt.Print("Enter Staff Id: ")
 				fmt.Scan(&id)
@@ -159,11 +160,7 @@ func main() {
 			}
 		} else if object == "staffTransaction" {
 			if method == "create" {
-				saleId, staffId, amount, typ := 0, 0, 0, 0
-				fmt.Print("Enter Sale Id: ")
-				fmt.Scan(&saleId)
-				fmt.Print("Enter Staff Id: ")
-				fmt.Scan(&staffId)
+				amount, typ := 0, 0
 				fmt.Print("Enter Amount: ")
 				fmt.Scan(&amount)
 				fmt.Print("Enter Transaction Type: ")
@@ -172,15 +169,11 @@ func main() {
 				sourceType, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 				fmt.Print("Enter text for transaction: ")
 				text, _ := bufio.NewReader(os.Stdin).ReadString('\n')
-				h.CreateStaffTransaction(saleId, staffId, amount, typ, sourceType, text)
+				h.CreateStaffTransaction(amount, typ, sourceType, text)
 			} else if method == "update" {
 				fmt.Print("Enter transaction Id: ")
 				fmt.Scan(&id)
-				saleId, staffId, amount, typ := 0, 0, 0, 0
-				fmt.Print("Enter Sale Id: ")
-				fmt.Scan(&saleId)
-				fmt.Print("Enter Staff Id: ")
-				fmt.Scan(&staffId)
+				amount, typ := 0, 0
 				fmt.Print("Enter Amount: ")
 				fmt.Scan(&amount)
 				fmt.Print("Enter Transaction Type: ")
@@ -189,7 +182,7 @@ func main() {
 				sourceType, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 				fmt.Print("Enter text for transaction: ")
 				text, _ := bufio.NewReader(os.Stdin).ReadString('\n')
-				h.UpdateStaffTransaction(id, saleId, staffId, amount, typ, sourceType, text)
+				h.UpdateStaffTransaction(id, amount, typ, sourceType, text)
 			} else if method == "get" {
 				fmt.Print("Enter transaction Id: ")
 				fmt.Scan(&id)
@@ -209,15 +202,9 @@ func main() {
 		} else if object == "sale" {
 			if method == "create" {
 				var (
-					branchId, shopAssistantId, cashierId, paymentType, status int
-					price                                                     float64
+					paymentType, status int
+					price               float64
 				)
-				fmt.Print("Enter Branch Id: ")
-				fmt.Scan(&branchId)
-				fmt.Print("Enter Shop Assistant Id: ")
-				fmt.Scan(&shopAssistantId)
-				fmt.Print("Enter Cashier Id: ")
-				fmt.Scan(&cashierId)
 				fmt.Print("Enter payment type: ")
 				fmt.Scan(&paymentType)
 				fmt.Print("Enter status: ")
@@ -226,20 +213,14 @@ func main() {
 				fmt.Scan(&price)
 				fmt.Print("Enter client name: ")
 				clientName, _ := bufio.NewReader(os.Stdin).ReadString('\n')
-				h.CreateSale(branchId, shopAssistantId, cashierId, paymentType, status, price, clientName)
+				h.CreateSale(paymentType, status, price, clientName)
 			} else if method == "update" {
 				fmt.Print("Enter Sale Id: ")
 				fmt.Scan(&id)
 				var (
-					branchId, shopAssistantId, cashierId, paymentType, status int
-					price                                                     float64
+					paymentType, status int
+					price               float64
 				)
-				fmt.Print("Enter Branch Id: ")
-				fmt.Scan(&branchId)
-				fmt.Print("Enter Shop Assistant Id: ")
-				fmt.Scan(&shopAssistantId)
-				fmt.Print("Enter Cashier Id: ")
-				fmt.Scan(&cashierId)
 				fmt.Print("Enter payment type: ")
 				fmt.Scan(&paymentType)
 				fmt.Print("Enter status: ")
@@ -248,7 +229,7 @@ func main() {
 				fmt.Scan(&price)
 				fmt.Print("Enter client name: ")
 				clientName, _ := bufio.NewReader(os.Stdin).ReadString('\n')
-				h.UpdateSale(id, branchId, shopAssistantId, cashierId, paymentType, status, price, clientName)
+				h.UpdateSale(id, paymentType, status, price, clientName)
 			} else if method == "get" {
 				fmt.Print("Enter Sale Id: ")
 				fmt.Scan(&id)

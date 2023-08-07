@@ -1,8 +1,6 @@
 package models
 
 type CreateStaffTransaction struct {
-	SaleId     int
-	StaffId    int
 	Type       int
 	SourceType string
 	Amount     int
@@ -10,9 +8,9 @@ type CreateStaffTransaction struct {
 }
 
 type StaffTransaction struct {
-	Id         int
-	SaleId     int
-	StaffId    int
+	Id         string
+	SaleId     string
+	StaffId    string
 	Type       int
 	SourceType string
 	Amount     int

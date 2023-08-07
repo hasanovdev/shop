@@ -5,15 +5,12 @@ import (
 	"shop/models"
 )
 
-func (h *handler) CreateSale(branchId, shopAssistantId, cashierId, paymentType, status int, price float64, clientName string) {
+func (h *handler) CreateSale(paymentType, status int, price float64, clientName string) {
 	resp, err := h.strg.Sale().CreateSale(models.CreateSale{
-		BranchID:        branchId,
-		ShopAssistantID: shopAssistantId,
-		CashierID:       cashierId,
-		Price:           price,
-		PaymentType:     paymentType,
-		Status:          status,
-		ClientName:      clientName,
+		Price:       price,
+		PaymentType: paymentType,
+		Status:      status,
+		ClientName:  clientName,
 	})
 	if err != nil {
 		fmt.Println("error from CreateSale:", err.Error())
@@ -22,16 +19,13 @@ func (h *handler) CreateSale(branchId, shopAssistantId, cashierId, paymentType, 
 	fmt.Println("created new sale with id:", resp)
 }
 
-func (h *handler) UpdateSale(id, branchId, shopAssistantId, cashierId, paymentType, status int, price float64, clientName string) {
+func (h *handler) UpdateSale(id string, paymentType, status int, price float64, clientName string) {
 	resp, err := h.strg.Sale().UpdateSale(models.Sale{
-		Id:              id,
-		BranchID:        branchId,
-		ShopAssistantID: shopAssistantId,
-		CashierID:       cashierId,
-		Price:           price,
-		PaymentType:     paymentType,
-		Status:          status,
-		ClientName:      clientName,
+		Id:          id,
+		Price:       price,
+		PaymentType: paymentType,
+		Status:      status,
+		ClientName:  clientName,
 	})
 	if err != nil {
 		fmt.Println("error from UpdateSale:", err.Error())
@@ -40,7 +34,7 @@ func (h *handler) UpdateSale(id, branchId, shopAssistantId, cashierId, paymentTy
 	fmt.Println(resp)
 }
 
-func (h *handler) GetSale(id int) {
+func (h *handler) GetSale(id string) {
 	resp, err := h.strg.Sale().GetSale(models.IdRequest{Id: id})
 	if err != nil {
 		fmt.Println("error from GetSale:", err.Error())
@@ -67,7 +61,7 @@ func (h *handler) GetAllSale(page, limit int) {
 	fmt.Println(resp)
 }
 
-func (h *handler) DeleteSale(id int) {
+func (h *handler) DeleteSale(id string) {
 	resp, err := h.strg.Sale().DeleteSale(models.IdRequest{Id: id})
 	if err != nil {
 		fmt.Println("error from DeleteSale:", err.Error())

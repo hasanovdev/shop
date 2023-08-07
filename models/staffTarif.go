@@ -9,7 +9,7 @@ type CreateStaffTarif struct {
 }
 
 type StaffTarif struct {
-	Id            int
+	Id            string
 	Name          string
 	Type          int
 	AmountForCash float64

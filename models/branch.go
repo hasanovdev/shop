@@ -7,7 +7,7 @@ type CreateBranch struct {
 }
 
 type Branch struct {
-	Id        int
+	Id        string
 	Name      string
 	Address   string
 	CreatedAt string
@@ -16,7 +16,7 @@ type Branch struct {
 }
 
 type IdRequest struct {
-	Id int
+	Id string
 }
 
 type GetAllBranchRequest struct {

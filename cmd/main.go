@@ -168,7 +168,9 @@ func main() {
 				fmt.Scan(&amount)
 				fmt.Print("Enter Transaction Type: ")
 				fmt.Scan(&typ)
+				fmt.Print("Enter sourceType: ")
 				sourceType, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				fmt.Print("Enter text for transaction: ")
 				text, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 				h.CreateStaffTransaction(saleId, staffId, amount, typ, sourceType, text)
 			} else if method == "update" {
@@ -183,7 +185,9 @@ func main() {
 				fmt.Scan(&amount)
 				fmt.Print("Enter Transaction Type: ")
 				fmt.Scan(&typ)
+				fmt.Print("Enter sourceType: ")
 				sourceType, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				fmt.Print("Enter text for transaction: ")
 				text, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 				h.UpdateStaffTransaction(id, saleId, staffId, amount, typ, sourceType, text)
 			} else if method == "get" {

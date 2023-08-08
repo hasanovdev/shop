@@ -13,8 +13,12 @@ var id string
 var typ int
 
 func main() {
+	// fmt.Println(os.Getwd())
+	// _, err := os.ReadFile("../data/branches.json")
+	// fmt.Println(err)
+	// return
 	cfg := config.Load()
-	strg := memory.NewStorage()
+	strg := memory.NewStorage("../data/branches.json")
 	h := handler.NewHandler(strg, *cfg)
 
 	fmt.Println("Welcome to my program!")
@@ -36,18 +40,23 @@ func main() {
 			if method == "create" {
 				fmt.Print("Enter Branch Name: ")
 				name, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				name = name[:len(name)-1]
 				fmt.Print("Enter Branch Address: ")
 				address, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				address = address[:len(address)-1]
 				fmt.Print("Enter Branch Founded At: ")
-				foundedAt, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				var foundedAt string
+				fmt.Scan(&foundedAt)
 				h.CreateBranch(name, address, foundedAt)
 			} else if method == "update" {
 				fmt.Print("Enter Branch Id: ")
 				fmt.Scan(&id)
 				fmt.Print("Enter Branch Name: ")
 				name, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				name = name[:len(name)-1]
 				fmt.Print("Enter Branch Address: ")
 				address, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				address = address[:len(address)-1]
 				fmt.Print("Enter Branch Founded at: ")
 				foundedAt, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 				h.UpdateBranch(id, name, address, foundedAt)
@@ -63,6 +72,7 @@ func main() {
 				fmt.Scan(&limit)
 				fmt.Print("Enter search name: ")
 				search, _ = bufio.NewReader(os.Stdin).ReadString('\n')
+				search = search[:len(search)-1]
 				h.GetAllBranch(page, limit, search)
 			} else if method == "delete" {
 				fmt.Print("Enter Branch Id: ")
@@ -73,10 +83,12 @@ func main() {
 			if method == "create" {
 				fmt.Print("Enter Staff Name: ")
 				name, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				name = name[:len(name)-1]
 				fmt.Print("Enter Staff Type: ")
 				fmt.Scan(&typ)
 				fmt.Print("Enter Staff Birthdate: ")
 				birthDate, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+				birthDate = birthDate[:len(birthDate)-1]
 				var balance float64
 				fmt.Print("Enter Staff Balance: ")
 				fmt.Scan(&balance)

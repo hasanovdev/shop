@@ -1,0 +1,33 @@
+[
+    {
+	"Id":"326f4195-40ce-409a-ad72-75c32cc87f42",
+	"Name":"test3\n",
+	"Address":"test3\n",
+	"CreatedAt":"2023-08-07 19:29:57",
+	"FoundedAt":"2010-10-10",
+	"Year":13
+    },
+    {
+    	"Id":"ca24e854-4b18-4365-8696-f7247671795d",
+    	"Name":"Bodomzor\n",
+    	"Address":"Amir Temur Street\n",
+    	"CreatedAt":"2023-08-07 19:31:41",
+    	"FoundedAt":"2018-05-17",
+    	"Year":5
+    },
+    {
+    	"Id":"ff63174f-f998-43ba-b833-07086176ea8e",
+    	"Name":"test4",
+    	"Address":"test4\n",
+    	"CreatedAt":"2023-08-07 19:37:12",
+    	"FoundedAt":"2019-10-12",
+    	"Year":4
+    },
+    {	"Id":"87138048-88f4-4e7a-bb07-f0f21dad2f74",
+    	"Name":"test5",
+    	"Address":"test5",
+    	"CreatedAt":"2023-08-08 17:10:00",
+    	"FoundedAt":"2020-10-10",
+    	"Year":3
+    }
+]

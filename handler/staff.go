@@ -70,3 +70,12 @@ func (h *handler) DeleteStaff(id string) {
 	}
 	fmt.Println(resp)
 }
+
+func (h *handler) ChangeBalance(id string, balance float64) {
+	resp, err := h.strg.Staff().ChangeBalance(models.Staff{Id: id, Balance: balance})
+	if err != nil {
+		fmt.Println("error from ChangeBalance: ", err.Error())
+		return
+	}
+	fmt.Println(resp)
+}

@@ -10,9 +10,9 @@ type store struct {
 	sales             *saleRepo
 }
 
-func NewStorage() storage.StorageI {
+func NewStorage(fileName string) storage.StorageI {
 	return &store{
-		branches:          NewBranchRepo(),
+		branches:          NewBranchRepo(fileName),
 		staffs:            NewStaffRepo(),
 		staffTarifs:       NewStaffTarifRepo(),
 		staffTransactions: NewStaffTransactionsRepo(),

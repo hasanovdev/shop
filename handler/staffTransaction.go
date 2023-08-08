@@ -5,7 +5,7 @@ import (
 	"shop/models"
 )
 
-func (h *handler) CreateStaffTransaction(amount, typ int, sourceType, text string) {
+func (h *handler) CreateStaffTransaction(amount float64, typ int, sourceType, text string) {
 	resp, err := h.strg.StaffTransaction().CreateStaffTransaction(models.CreateStaffTransaction{
 		Type:       typ,
 		SourceType: sourceType,
@@ -19,7 +19,7 @@ func (h *handler) CreateStaffTransaction(amount, typ int, sourceType, text strin
 	fmt.Println("created new staffTransaction with id:", resp)
 }
 
-func (h *handler) UpdateStaffTransaction(id string, amount, typ int, sourceType, text string) {
+func (h *handler) UpdateStaffTransaction(id string, amount float64, typ int, sourceType, text string) {
 	resp, err := h.strg.StaffTransaction().UpdateStaffTransaction(models.StaffTransaction{
 		Id:         id,
 		Type:       typ,

@@ -5,6 +5,7 @@ type CreateSale struct {
 	PaymentType int //card, cash
 	Status      int // success,cancel
 	ClientName  string
+	StaffId     string	
 }
 
 type Sale struct {

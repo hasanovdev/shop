@@ -3,7 +3,7 @@ package models
 type CreateStaffTransaction struct {
 	Type       int
 	SourceType string
-	Amount     int
+	Amount     float64
 	Text       string
 }
 
@@ -13,7 +13,7 @@ type StaffTransaction struct {
 	StaffId    string
 	Type       int
 	SourceType string
-	Amount     int
+	Amount     float64
 	Text       string
 	CreatedAt  string
 }

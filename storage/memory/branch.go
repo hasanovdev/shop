@@ -48,15 +48,6 @@ func (x *branchRepo) CreateBranch(req models.CreateBranch) (string, error) {
 	}
 
 	return id, nil
-	// x.branches = append(x.branches, models.Branch{
-	// 	Id:        id,
-	// 	Name:      req.Name,
-	// 	Address:   req.Address,
-	// 	FoundedAt: req.FoundedAt,
-	// 	CreatedAt: time.Now().Format("2006-01-02 15:04:05"),
-	// 	Year:      time.Now().Year() - date.Year(),
-	// })
-	// return id, nil
 }
 
 func (b *branchRepo) UpdateBranch(req models.Branch) (msg string, err error) {

@@ -5,17 +5,22 @@ import (
 	"shop/models"
 )
 
-func (h *handler) CreateSale(paymentType, status int, price float64, clientName string) {
+func (h *handler) CreateSale(paymentType, status int, price float64, clientName, staffId string) {
 	resp, err := h.strg.Sale().CreateSale(models.CreateSale{
 		Price:       price,
 		PaymentType: paymentType,
 		Status:      status,
 		ClientName:  clientName,
+		StaffId:     staffId,
 	})
 	if err != nil {
 		fmt.Println("error from CreateSale:", err.Error())
 		return
 	}
+
+	money := price / 100
+	h.strg.Staff().ChangeBalance(models.ChangeBalanceStaff{Id: staffId, AddMoney: money})
+	h.strg.StaffTransaction().CreateStaffTransaction(models.CreateStaffTransaction{Type: paymentType, SourceType: "sale", Amount: price, Text: "transaction created"})
 	fmt.Println("created new sale with id:", resp)
 }
 

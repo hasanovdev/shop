@@ -84,10 +84,10 @@ func (s *staffRepo) DeleteStaff(req models.IdRequest) (string, error) {
 	return "", errors.New("not found")
 }
 
-func (s *staffRepo) ChangeBalance(req models.Staff) (string, error) {
+func (s *staffRepo) ChangeBalance(req models.ChangeBalanceStaff) (string, error) {
 	for i, v := range s.staffs {
 		if v.Id == req.Id {
-			s.staffs[i].Balance = req.Balance
+			s.staffs[i].Balance += req.AddMoney
 			return "changed successfully", nil
 		}
 	}

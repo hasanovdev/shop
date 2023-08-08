@@ -27,3 +27,8 @@ type GetAllStaff struct {
 	Staffs []Staff
 	Count  int
 }
+
+type ChangeBalanceStaff struct {
+	Id       string
+	AddMoney float64
+}
